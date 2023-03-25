@@ -1,0 +1,1 @@
+awk '{print " : " $6 " "$7}' testni_primjeri/* |sed 's/\"//g' |sort | uniq -c | sort -r -k 1
