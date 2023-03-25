@@ -18,9 +18,7 @@ pattern=$2
 declare -i total=0
 
 for file in $dir/*; do
-
-total+=`find "$file" -name "$2" -type f -exec wc -l {} \; | awk '{ a += $1 } END { print a }'`
-
+  total+=`find "$file" -name "$2" -type f -exec wc -l {} \; | awk '{ a += $1 } END { print a }'`
 done
 
 echo "Ukupan broj redaka u datotekama s imenima koji odgovaraju uzorku je: $total"
