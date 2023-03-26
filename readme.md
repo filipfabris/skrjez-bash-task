@@ -175,3 +175,31 @@ find a -name "*.txt" -exec echo {} \;
 ```bash
 find "a" -name "*.txt" -exec wc -l {} \;
 ```
+
+### Image statictics
+
+```bash
+awk '{print $9}' test.txt | cut -d '_' -f1 | sort | uniq -c | sed -r 's/([0-9]{4,})([0-9]{2,})([0-9]{2,})/\1-\3/'
+```
+
+* Input:
+```
+-rw-r--r-- 1 filip 197609 0 Jan  2  2020 20200104_1025.jpg
+-rw-r--r-- 1 filip 197609 0 Jan  2  2020 20200103_1026.jpg
+-rw-r--r-- 1 filip 197609 0 Jan  2  2020 20200103_1026.jpg
+```
+
+* Output:
+```
+ 2 2020-03
+ 1 2020-04
+```
+
+### Find command
+```bash
+find . -type f -mtime -10 -exec wc -l {} \;
+```
+* Same as:
+```bash
+wc -l `find . -type f -mtime -10`
+```
